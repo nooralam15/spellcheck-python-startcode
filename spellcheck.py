@@ -10,6 +10,33 @@ def main():
     # Load data files into lists
     dictionary = loadWordsFromFile("data-files/dictionary.txt")
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
+
+    #load the menu 
+    loop = true 
+    while loop:
+        print("Main Menu")
+        userInp = input("Enter the number \n 1. Spell Check a Word (Linear Searcg) \n 2. Randomize Grades \n 3. Stats \n 4. Count Honors \n 5. Exit\n")
+        
+        if userInp == "1":
+            displayGrades()
+
+        elif userInp == "2":
+            createGrades()
+            print("Grades added")
+
+        elif userInp == "3":
+            stats()
+
+        elif userInp == "4":
+            honors()
+
+        elif userInp == "5":
+            print("Program closed")
+            sys.exit()
+
+        else:
+            print("Invalid Response")
+
     
 # end main()
 
