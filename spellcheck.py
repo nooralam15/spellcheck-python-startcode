@@ -4,6 +4,23 @@
 # 2: aliceWords: a list containing all of the words from "AliceInWonderland.txt"
 
 import re  # Needed for splitting text with a regular expression
+import time #needed to calculate the time
+
+#initiliaze a function that will use linear search
+def linearSearch(array, item):
+    #create a variable to store current time
+    currentTime = time.perf_counter()
+    for i in range(len(array)):
+        if array[i] == item:
+            endTime = time.perf_counter()
+            return print(item + " is IN dictionary and found in position" + str(array[i]) + " in" + str(endTime - currentTime) + " seconds")
+        endTime = time.perf_counter()
+        return print(item + " is NOT in dictionary and took " + str(endTime - currentTime) + " seconds")
+
+
+#initialize a function that will use binary search
+def binarySearch(array, item):
+    print("Hi")
 
 
 def main():
@@ -12,27 +29,28 @@ def main():
     aliceWords = loadWordsFromFile("data-files/AliceInWonderLand.txt")
 
     #load the menu 
-    loop = true 
+    loop = True 
     while loop:
         print("Main Menu")
-        userInp = input("Enter the number \n 1. Spell Check a Word (Linear Search) \n 2. Randomize Grades \n 3. Stats \n 4. Count Honors \n 5. Exit\n")
+        userInp = input("Enter the number \n 1. Spell Check a Word (Linear Search) \n 2. Spell Check a Word (Binary Search)\n 3. Spell Check Alice In Wonderland (Linear Search) \n 4. Spell Check Alice In Wonderland (Binary Search) \n 5. Exit\n")
         
         if userInp == "1":
-            displayGrades()
+            word = input("Enter a word: ").lower()
+            linearSearch(dictionary, word)
 
         elif userInp == "2":
-            createGrades()
-            print("Grades added")
+            word = input("Enter a word: ").lower()
+            binarySearch(dictionary, word)
 
         elif userInp == "3":
-            stats()
+            linearSearch(dictionary, word)
 
         elif userInp == "4":
-            honors()
+            linearSearch(dictionary, word)
 
         elif userInp == "5":
             print("Program closed")
-            sys.exit()
+            quit()
 
         else:
             print("Invalid Response")
