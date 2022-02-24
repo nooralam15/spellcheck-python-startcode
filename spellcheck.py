@@ -15,7 +15,7 @@ def main():
     loop = true 
     while loop:
         print("Main Menu")
-        userInp = input("Enter the number \n 1. Spell Check a Word (Linear Searcg) \n 2. Randomize Grades \n 3. Stats \n 4. Count Honors \n 5. Exit\n")
+        userInp = input("Enter the number \n 1. Spell Check a Word (Linear Search) \n 2. Randomize Grades \n 3. Stats \n 4. Count Honors \n 5. Exit\n")
         
         if userInp == "1":
             displayGrades()
