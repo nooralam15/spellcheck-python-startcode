@@ -6,16 +6,12 @@
 import re  # Needed for splitting text with a regular expression
 import time #needed to calculate the time
 
-#initiliaze a function that will use linear search
+#create a function that will search the array using linear search
 def linearSearch(array, item):
-    #create a variable to store current time
-    currentTime = time.perf_counter()
     for i in range(len(array)):
-        if array[i] == item:
-            endTime = time.perf_counter()
-            return print(item + " is IN dictionary and found in position" + str(array[i]) + " in" + str(endTime - currentTime) + " seconds")
-        endTime = time.perf_counter()
-        return print(item + " is NOT in dictionary and took " + str(endTime - currentTime) + " seconds")
+        if item == array[i]:
+            return i
+    return -1
 
 
 #initialize a function that will use binary search
