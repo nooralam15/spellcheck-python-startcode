@@ -5,6 +5,7 @@
 
 import re  # Needed for splitting text with a regular expression
 import time #needed to calculate the time
+import math #needed for binary search
 
 #create a function that will search the array using linear search
 def linearSearch(array, item):
@@ -14,9 +15,22 @@ def linearSearch(array, item):
     return -1
 
 
-#initialize a function that will use binary search
+#create a function that will search the array using binary search
 def binarySearch(array, item):
-    print("Hi")
+    #set variables
+    li = 0
+    ui = len(array) - 1
+   
+    while li <= ui:
+        mi = math.floor((li + ui)/2)
+        if item == array[mi]:
+            return mi
+        elif item < array[mi]:
+            ui = mi - 1
+        else:
+            li = mi + 1
+    return -1
+
 
 
 def main():
@@ -29,14 +43,30 @@ def main():
     while loop:
         print("Main Menu")
         userInp = input("Enter the number \n 1. Spell Check a Word (Linear Search) \n 2. Spell Check a Word (Binary Search)\n 3. Spell Check Alice In Wonderland (Linear Search) \n 4. Spell Check Alice In Wonderland (Binary Search) \n 5. Exit\n")
-        
+    
         if userInp == "1":
             word = input("Enter a word: ").lower()
-            linearSearch(dictionary, word)
+            #variable to store the return value of the function
+            startTime = time.perf_counter()
+            results = linearSearch(dictionary, word)
+            endTime = time.perf_counter()
+            #check to see the results
+            if results != -1:
+                print(word + " is IN the dictionary at position " + str(results) + " (" + str(endTime - startTime) + " seconds)")
+            else:
+                print(word + " NOT in the dictionary" + " (" + str(endTime - startTime) + " seconds)")
 
         elif userInp == "2":
             word = input("Enter a word: ").lower()
-            binarySearch(dictionary, word)
+            #variable to store the return value of the function
+            startTime = time.perf_counter()
+            results = binarySearch(dictionary, word)
+            endTime = time.perf_counter()
+            #check to see the results
+            if results != -1:
+                print(word + " is IN the dictionary at position " + str(results) + " (" + str(endTime - startTime) + " seconds)")
+            else:
+                print(word + " NOT in the dictionary" + " (" + str(endTime - startTime) + " seconds)")
 
         elif userInp == "3":
             linearSearch(dictionary, word)
