@@ -32,6 +32,27 @@ def binarySearch(array, item):
     return -1
 
 
+#create a function that will search for the words
+def wordSearch(searchFunction, array, item): 
+    startTime = time.perf_counter()
+    results = searchFunction(array, item)
+    endTime = time.perf_counter()
+     #check to see the results
+    if results != -1:
+        print(item + " is IN the dictionary at position " + str(results) + " (" + str(endTime - startTime) + " seconds)")
+    else:
+        print(item + " NOT in the dictionary" + " (" + str(endTime - startTime) + " seconds)")
+
+
+#Create a function that will match words from AIW with the dictionary
+def aliceSearch(searchFunction, array, item):
+    startTime = time.perf_counter()
+    results = searchFunction(array, item)
+    endTime = time.perf_counter()
+     #check to see the results
+    if results == -1:
+         
+
 
 def main():
     # Load data files into lists
@@ -46,30 +67,16 @@ def main():
     
         if userInp == "1":
             word = input("Enter a word: ").lower()
-            #variable to store the return value of the function
-            startTime = time.perf_counter()
-            results = linearSearch(dictionary, word)
-            endTime = time.perf_counter()
-            #check to see the results
-            if results != -1:
-                print(word + " is IN the dictionary at position " + str(results) + " (" + str(endTime - startTime) + " seconds)")
-            else:
-                print(word + " NOT in the dictionary" + " (" + str(endTime - startTime) + " seconds)")
+            wordSearch(linearSearch, dictionary, word)
 
         elif userInp == "2":
             word = input("Enter a word: ").lower()
-            #variable to store the return value of the function
-            startTime = time.perf_counter()
-            results = binarySearch(dictionary, word)
-            endTime = time.perf_counter()
-            #check to see the results
-            if results != -1:
-                print(word + " is IN the dictionary at position " + str(results) + " (" + str(endTime - startTime) + " seconds)")
-            else:
-                print(word + " NOT in the dictionary" + " (" + str(endTime - startTime) + " seconds)")
+            wordSearch(binarySearch, dictionary, word)
 
         elif userInp == "3":
-            linearSearch(dictionary, word)
+            for x in aliceWords:
+                x.lower()
+                
 
         elif userInp == "4":
             linearSearch(dictionary, word)
@@ -99,3 +106,4 @@ def loadWordsFromFile(fileName):
 
 # Call main() to begin program
 main()
+
