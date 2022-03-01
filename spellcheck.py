@@ -32,7 +32,7 @@ def binarySearch(array, item):
     return -1
 
 
-#create a function that will search for the words
+#create a function that will search for the user's words in the dictionary
 def wordSearch(searchFunction, array, item): 
     startTime = time.perf_counter()
     results = searchFunction(array, item)
