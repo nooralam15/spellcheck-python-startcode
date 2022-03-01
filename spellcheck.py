@@ -46,12 +46,12 @@ def wordSearch(searchFunction, array, item):
 
 #Create a function that will match words from AIW with the dictionary
 def aliceSearch(searchFunction, array, item):
-    startTime = time.perf_counter()
     results = searchFunction(array, item)
-    endTime = time.perf_counter()
-     #check to see the results
+    #check to see the results
     if results == -1:
-         
+         return 1 
+    else: 
+        return 0
 
 
 def main():
@@ -74,12 +74,25 @@ def main():
             wordSearch(binarySearch, dictionary, word)
 
         elif userInp == "3":
+            count = 0
+            startTime = time.perf_counter()
             for x in aliceWords:
                 x.lower()
+                value = aliceSearch(linearSearch, dictionary, x)
+                count+=value
+            endTime = time.perf_counter()
+            print("Numbers of words not found in dictionary: " + str(count) + " (" + str(endTime - startTime) + " seconds)" )
                 
 
         elif userInp == "4":
-            linearSearch(dictionary, word)
+            count = 0
+            startTime = time.perf_counter()
+            for x in aliceWords:
+                x.lower()
+                value = aliceSearch(binarySearch, dictionary, x)
+                count+=value
+            endTime = time.perf_counter()
+            print("Numbers of words not found in dictionary: " + str(count) + " (" + str(endTime - startTime) + " seconds)" )
 
         elif userInp == "5":
             print("Program closed")
